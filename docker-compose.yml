@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: web
+    build: ./project
+    command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
+    volumes:
+      - ./project:/usr/src/app
+    ports:
+      - 8004:8000
+    environment:
+      - ENVIRONMENT=dev
+      - TESTING=0
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/web_dev
+      - DATABASE_TEST_URL=postgres://postgres:postgres@db:5432/web_test
+      - TG_BOT_TOKEN=5342153868:AAHUUpybOG1i80_z7IuaAZ7p7ONJMhCHewc
+      - CHAT_ID=
+      - TIME_INTERVAL_TG_BOT=100
+      - TIME_INTERVAL_GOOGLE_SHEETS_REQUEST=100 
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    build:
+      context: ./project/db
+      dockerfile: Dockerfile
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres

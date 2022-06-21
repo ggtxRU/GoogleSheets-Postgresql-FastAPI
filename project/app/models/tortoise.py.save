@@ -1,0 +1,13 @@
+from tortoise import fields, models
+
+
+class Orders(models.Model):
+    id = fields.IntField(pk=True)
+    order_number = fields.IntField()
+    price_in_dollars = fields.IntField()
+    price_in_rub = fields.IntField()
+    delivery_date = fields.DatetimeField(auto_now_add=False)
+
+    def __str__(self):
+        return self.order_number
+docker-compose exec web aerich init -t app.db.TORTOISE_ORM

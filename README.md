@@ -37,7 +37,4 @@
 </li> 
   <ul><code>docker-compose up --build<br></code></ul><br>
   
-  <li>
-  <strong>REST API</strong>
-</li> 
-<ul><code>http://localhost:8004/docs ---> реализовано одно REST API получения ордера из БД<br></code></ul><br>
+  <h4> <em><a href="https://docs.google.com/spreadsheets/d/14h001HdvIbWxzuzNPUOBjGRpRzPOOK7-eZkGI0n7TDk/edit#gid=0" rel="nofollow"> Ссылка</a> на Google Sheets документ.</h4>
